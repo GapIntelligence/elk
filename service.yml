@@ -3,10 +3,8 @@ services:
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.4
     ports:
-    - container: 9200
-      tcp: 9200
-    - container: 9300
-      tcp: 9300
+    - 9200
+    - 9300
     env_vars:
       ES_JAVA_OPTS: "-Xms512m -Xmx512m"
     volumes:
@@ -24,3 +22,5 @@ services:
       tcp: 5044
     - container: 5045
       tcp: 5045
+    - container: 5228
+      udp: 5228

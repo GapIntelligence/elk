@@ -15,8 +15,8 @@ services:
     build:
       context: ./logstash
     ports:
-      - 5044:5044
       - 5045:5045
+      - 5228:5228
     links:
       - elasticsearch
     networks:
