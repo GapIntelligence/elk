@@ -1,0 +1,26 @@
+version: 2
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.4
+    ports:
+    - container: 9200
+      tcp: 9200
+    - container: 9300
+      tcp: 9300
+    env_vars:
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+    volumes:
+    - "/data/elasticsearch/data:/usr/share/elasticsearch/data"
+  kibana:
+    image: docker.elastic.co/kibana/kibana-oss:6.2.4
+    ports:
+    - 5601:80:443
+  logstash:
+    git_url: git@github.com:GapIntelligence/elk.git
+    git_branch: master
+    build_root: "./logstash"
+    ports:
+    - container: 5044
+      tcp: 5044
+    - container: 5045
+      tcp: 5045
